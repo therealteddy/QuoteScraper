@@ -5,6 +5,7 @@
 
 #include <time.h>
 #include <stdio.h> 
+#include <locale.h>
 #include <stdlib.h>
 #include <curl/curl.h>
 #include <libxml/xpath.h>
@@ -19,6 +20,9 @@
 signed int randint(int min, int max); 
 
 int main(int argc, char* argv[]) {
+   // Set Locale - prevents character encoding errors
+   setlocale(LC_ALL, "en_US.UTF-8");
+
    // Setup a base url 
    char url[100] = DEFAULT_URL;
 
@@ -26,6 +30,7 @@ int main(int argc, char* argv[]) {
    if (argc == 2) {
       if (!strcmp(argv[1], "--help")) {
          printf(USAGE_STRING, argv[0]); 
+         return 1;
       }
       else if (!strcmp(argv[1], "--inspirational")) strcat(url, "tag/inspirational/");  
       else if (!strcmp(argv[1], "--love"))          strcat(url, "tag/love/");  
@@ -92,7 +97,6 @@ int main(int argc, char* argv[]) {
    unsigned int rand_index = randint(0, quote_ns->nodeNr); // The rand_index corresponds to the same author and quote
    printf("%s\n", (char*) quote_ns->nodeTab[rand_index]->content);
    printf("- %s\n", (char*) author_ns->nodeTab[rand_index]->content);
-
    xmlFreeDoc(_htmldoc);
    curl_easy_cleanup(curl);
 
