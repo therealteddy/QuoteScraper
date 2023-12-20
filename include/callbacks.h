@@ -6,7 +6,7 @@
 #define CURL_TRUE 1L 
 #define CURL_FALSE 0L 
 
-#define SCRAPPED_FILEPATH "./src/scrapped.html"
+#define SCRAPPED_FILEPATH "./scrapped.html"
 
 // Callback to print to stdio 
 size_t curl_print(void* htmldata, size_t size, size_t nmemb, void* userdata); 
