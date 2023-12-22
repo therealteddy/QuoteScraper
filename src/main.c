@@ -97,6 +97,8 @@ int main(int argc, char* argv[]) {
    unsigned int rand_index = randint(0, quote_ns->nodeNr); // The rand_index corresponds to the same author and quote
    printf("%s\n", (char*) quote_ns->nodeTab[rand_index]->content);
    printf("- %s\n", (char*) author_ns->nodeTab[rand_index]->content);
+   
+   // Clean up!
    xmlFreeDoc(_htmldoc);
    curl_easy_cleanup(curl);
 

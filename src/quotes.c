@@ -6,7 +6,7 @@ xmlNodeSetPtr xpath_evaluate(htmlDocPtr htmldoc, xmlChar* xpath_expr) {
     xmlNodeSetPtr xpath_ns = xpath_res->nodesetval; 
 
     if (!xpath_ctx) {
-        fprintf(stderr, "Failed to create a XPath Context");
+        fprintf(stderr, "Failed to create a XPath Context!\n");
         return (xmlNodeSetPtr) 0; 
     }
 
